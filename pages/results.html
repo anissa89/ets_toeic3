@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TOEIC Digital Score Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #f4f8fb;
+      color: #003366;
+    }
+    header {
+      background-color: #003366;
+      color: white;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+    }
+    .container {
+      max-width: 900px;
+      margin: auto;
+      background: white;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      margin-top: 20px;
+      padding: 20px;
+    }
+    .title {
+      font-size: 20px;
+      font-weight: bold;
+    }
+    .name {
+      font-size: 32px;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+    .info {
+      margin-top: 10px;
+      font-size: 16px;
+    }
+    .section {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+      border-top: 1px solid #ccc;
+      padding-top: 10px;
+    }
+    .box {
+      flex: 1;
+      padding: 10px;
+    }
+    .score {
+      font-size: 24px;
+      font-weight: bold;
+    }
+    .button {
+      background-color: #003366;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      margin-top: 10px;
+      cursor: pointer;
+      font-size: 14px;
+      border-radius: 5px;
+    }
+    .legal {
+      font-size: 12px;
+      color: #777;
+      text-align: center;
+      margin-top: 30px;
+    }
+  </style>
+  <script>
+    // Function to extract query parameters from URL
+    function getQueryParams() {
+      const params = new URLSearchParams(window.location.search);
+      return {
+        firstName: params.get('first_name'),
+        lastName: params.get('last_name')
+      };
+    }
+
+    window.onload = function() {
+      const { firstName, lastName } = getQueryParams();
+      if (firstName && lastName) {
+        document.getElementById('candidateName').innerText = `${firstName} ${lastName}`;
+      }
+    };
+  </script>
+</head>
+<body>
+  <header>
+    <div class="title">*toeic</div>
+    <div>
+      <a href="#" style="color:white; margin-right:10px;">in</a>
+      <a href="#" style="color:white; margin-right:10px;">f</a>
+      <a href="#" style="color:white">t</a>
+    </div>
+  </header>
+  <div class="container">
+    <p><strong>WELCOME TO THE TOEIC&reg; DIGITAL SCORE PAGE.</strong><br>
+    On this page, you can find the TOEIC&reg; Digital score report. This official document states the candidate’s personal information and score...</p>
+
+    <h2>TOEIC&reg; Listening and Reading test</h2>
+    <div class="name" id="candidateName">[Nom et Prénom]</div>
+
+    <div class="section">
+      <div class="box">
+        <div><strong>Test date</strong></div>
+        <div>24 Mar 2025</div>
+        <div style="margin-top:10px;"><strong>Client/Institution</strong></div>
+        <div>GROUPE ESIEA France, Metropolitan</div>
+        <div style="margin-top:10px;"><strong>Valid until</strong></div>
+        <div>24 Mar 2027</div>
+      </div>
+      <div class="box">
+        <div><strong> Listening</strong></div>
+        <div class="score">450 / 495</div>
+        <div style="margin-top:10px;"><strong> Reading</strong></div>
+        <div class="score">405 / 495</div>
+        <div style="margin-top:10px;"><strong> Total score</strong></div>
+        <div class="score">855 / 990</div>
+      </div>
+    </div>
+
+    <button class="button">DOWNLOAD MY DIGITAL SCORE REPORT</button>
+    <button class="button" style="margin-left:10px; background-color:white; color:#003366; border:1px solid #003366;">SEE SCORE REPORT INFORMATION</button>
+
+    <p class="legal">
+      This digital score report is valid for 2 years and recognised in the country of the Client/Institution...
+    </p>
+    <p class="legal">
+      Copyright &copy; 2025 by ETS. All rights reserved...
+    </p>
+  </div>
+</body>
+</html>
